@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: dockerfiles/nodejs.dockerfile
+    ports:
+      - '3000:3000'
+    volumes: 
+      - logs:/app/logs
+      - ./src:/app
+      - /app/node_modules
+volumes: 
+  data:
+  logs:
