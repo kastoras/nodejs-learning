@@ -10,6 +10,16 @@ services:
       - logs:/app/logs
       - ./src:/app
       - /app/node_modules
+  assignment1:
+    build:
+      context: .
+      dockerfile: dockerfiles/nodejs_as1.dockerfile
+    ports:
+      - '3001:3001'
+    volumes: 
+      - logs:/app/logs
+      - ./src_as1:/app
+      - /app/node_modules      
 volumes: 
   data:
   logs:
