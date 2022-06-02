@@ -4,16 +4,30 @@ const users_action = require('./actions/users');
 const requestHandler = (req,res) => {
 
   const url = req.url;
+  let content = '';
 
   if(url === '/'){    
-    return default_action.home(res);
+    content = default_action.home();
   }
 
   if(url === '/users'){
-    return users_action.list(res);
+    content = users_action.list();
   }
 
+  return buildPage(res,content);
+
 };
+
+const buildPage = (res,content) => {
+  res.write('<html>');
+  res.write('<head><title>Enter Message</title></head>');
+  res.write('<body>');
+  res.write(content);
+  res.write('</body>');
+  res.write('</html>');
+
+  return res.end();
+}
 
 exports.handler = requestHandler;
 exports.otherExport = 'some other export';

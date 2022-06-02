@@ -2,21 +2,17 @@ const students = [
   'Nikos','Kostas','Petros','Katia','Maria'
 ];
 
-const list = (res) => {
+let content = '';
 
-  res.write('<html>');
-  res.write('<head><title>Enter Message</title></head>');
-  res.write('<body>');
-  res.write('<ul>');
+const list = () => {
+
+  content += '<ul>';
   students.forEach(student => {
-    res.write('<li>'+student+'</li>')
+    content += '<li>'+student+'</li>';
   });
-  res.write('</ul>');
-  res.write('</body>');
-  res.write('</html>');
+  content += '</ul>';
 
-  return res.end();
-
+  return content;
 };
 
 exports.list = list;
