@@ -1,6 +1,7 @@
-const home = () => {
+const home = (res) => {
 
-  return 'Welcome to Assignment 1';
+  res.write('Welcome to Assignment 1');
+  return res.end();
 
 };
 exports.home = home;
