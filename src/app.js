@@ -1,18 +1,18 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(adminRoutes);
+app.use(shopRoutes);
+
 app.use((req,res,next) => {
-  console.log('All middleware!');
-  next();
-});
-
-app.use('/create',(req,res,next) => {
-  res.send('<h1>Create Page</h1>');
-});
-
-app.use('/',(req,res,next) => {
-  res.send('<h1>Default</h1>');
+  res.status(404).send('<h1>Page not found!</h1>');
 });
 
 app.listen(3000);
