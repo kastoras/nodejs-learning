@@ -9,7 +9,13 @@ services:
     volumes: 
       - logs:/app/logs
       - ./src:/app
-      - /app/node_modules
+  npm:
+    image: node:14
+    working_dir: /app
+    entrypoint: ['npm']
+    volumes:
+      - ./src:/app
+
 volumes: 
-  data:
+  #data:
   logs:
