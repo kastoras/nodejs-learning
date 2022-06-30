@@ -19,7 +19,23 @@ services:
     volumes: 
       #- logs:/app/logs
       - ./src_as1:/app
-      - /app/node_modules      
+      - /app/node_modules   
+  assignment3:
+    build:
+      context: .
+      dockerfile: dockerfiles/nodejs_as3.dockerfile
+    ports:
+      - '3003:3000'
+    volumes: 
+      #- logs:/app/logs
+      - ./src_as3:/app
+      - /app/node_modules    
+  npm:
+    image: node:14
+    working_dir: /app
+    entrypoint: ['npm']
+    volumes:
+      - ./src:/app
 volumes: 
-  data:
+  #data:
   logs:
