@@ -2,11 +2,11 @@ FROM node
 
 WORKDIR /app
 
-COPY ./src/package.json .
+COPY ./src_as3/package.json .
 
 RUN npm install
 
-COPY ./src .
+COPY ./src_as3 .
 
 #EXPOSE 80
 
