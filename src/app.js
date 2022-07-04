@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const rootDir = require('./util/path');
+const errorController = require('./controllers/error');
 
 const app = express();
 
@@ -15,12 +15,9 @@ const shopRoutes = require('./routes/shop');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin',adminRoutes.routes);
+app.use('/admin',adminRoutes);
 app.use(shopRoutes);
 
-app.use((req,res,next) => {
-  res.status(404).render('404',{pageTitle: 'Page Not Found!'})
-  //res.status(404).sendFile(path.join(rootDir, 'views', '404.html'));
-});
+app.use(errorController.get404);
 
 app.listen(3000);
