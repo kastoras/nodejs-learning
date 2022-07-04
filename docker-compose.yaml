@@ -9,7 +9,7 @@ services:
     volumes: 
       - logs:/app/logs
       - ./src:/app
-      - /app/node_modules
+      #- /app/node_modules
   assignment1:
     build:
       context: .
