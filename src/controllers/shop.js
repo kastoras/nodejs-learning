@@ -24,6 +24,13 @@ exports.getCheckout = (req,res,next) => {
   });
 };
 
+exports.getOrders = (req,res,next) => {
+  res.render('shop/orders', {
+    pageTitle : 'Your Orders', 
+    path: '/orders',
+  });
+};
+
 exports.getProducts = (req, res, next) => {
   Product.fetchAll(products => {
     res.render('shop/product-list', {
