@@ -101,3 +101,5 @@ src/.fusebox/
 src/.dynamodb/
 
 */package-lock.json
+
+.vscode
